@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Xsk‘s Notes</title>
+  <subtitle>Quick notes</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-07-05T13:03:38.633Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>shukun.xu</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>First</title>
+    <link href="http://yoursite.com/2017/07/05/First/"/>
+    <id>http://yoursite.com/2017/07/05/First/</id>
+    <published>2017-07-05T08:24:22.000Z</published>
+    <updated>2017-07-05T13:03:38.633Z</updated>
+    
+    <content type="html"><![CDATA[<p>您好，欢迎来到我的技术博客。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;您好，欢迎来到我的技术博客。&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+</feed>
