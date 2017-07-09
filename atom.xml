@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-05T13:03:38.633Z</updated>
+  <updated>2017-07-09T06:05:49.660Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ES6 学习笔记</title>
+    <link href="http://yoursite.com/2017/07/07/ES6-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2017/07/07/ES6-学习笔记/</id>
+    <published>2017-07-07T03:31:19.000Z</published>
+    <updated>2017-07-09T06:05:49.660Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="let和const命令"><a href="#let和const命令" class="headerlink" title="let和const命令"></a>let和const命令</h1><h2 id="let命令"><a href="#let命令" class="headerlink" title="let命令"></a>let命令</h2><p>ES6新增了let命令，用来声明变量。它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a=<span class="number">1</span></div><div class="line"><span class="keyword">if</span> (<span class="literal">true</span>)&#123;</div><div class="line">    <span class="keyword">var</span> a=<span class="number">2</span></div><div class="line">    <span class="built_in">console</span>.log(a) <span class="comment">//2</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="number">2</span>) <span class="comment">//2</span></div></pre></td></tr></table></figure></p>
+<p>使用var两次输出都是2，而let则实际上为JavaScript新增了块级作用域。用它所声明的变量，只在let命令所在的代码块内有效。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="number">1</span></div><div class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</div><div class="line">    <span class="keyword">let</span> a = <span class="number">2</span></div><div class="line">    <span class="built_in">console</span>.log(a)  <span class="comment">//2</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(a)  <span class="comment">//1</span></div></pre></td></tr></table></figure>
+<p>一道经典的题目：通过循环内部创建函数输出索引值。<br>在ES5中一般通过闭包来实现，而使用ES6直接通过let声明变量即可。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//ES5</span></div><div class="line"><span class="keyword">var</span> func=[]</div><div class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++)&#123;</div><div class="line">    func.push((<span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(value)</div><div class="line">        &#125;</div><div class="line">    &#125;)(i))</div><div class="line">&#125;</div><div class="line"><span class="comment">//ES6</span></div><div class="line"><span class="keyword">for</span>( <span class="keyword">let</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>; i++)&#123;</div><div class="line">    func.push(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(i)</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="const命令"><a href="#const命令" class="headerlink" title="const命令"></a>const命令</h2><p>const也用来声明变量，但是声明的是常量。一旦声明，常量的值就不能改变。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> PI = <span class="built_in">Math</span>.PI</div><div class="line">PI = <span class="number">1</span> <span class="comment">//Uncaught TypeError: Assignment to constant variable.</span></div></pre></td></tr></table></figure></p>
+<h1 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h1><p>在ES5写法中，如果一段字符串中包含变量值得话，一般通过+号来拼接字符串。而在ES6中通过模板字符串可以轻松实现。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//ES5</span></div><div class="line"><span class="keyword">var</span> name =<span class="string">"world"</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"hello "</span>+name)  <span class="comment">//hello world</span></div><div class="line"></div><div class="line"><span class="comment">//ES6</span></div><div class="line"><span class="keyword">const</span> name =<span class="string">"world"</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">`hello <span class="subst">$&#123;name&#125;</span>`</span>) <span class="comment">//helle world</span></div></pre></td></tr></table></figure></p>
+<h1 id="函数默认参数"><a href="#函数默认参数" class="headerlink" title="函数默认参数"></a>函数默认参数</h1><p>在ES6中给函数的参数提供默认值，直接通过(=)赋值即可<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">action</span>(<span class="params">num =<span class="number">100</span></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(num)</div><div class="line">&#125;</div><div class="line"></div><div class="line">action() <span class="comment">//100</span></div><div class="line">action(<span class="number">200</span>) <span class="comment">//200</span></div></pre></td></tr></table></figure></p>
+<h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><p>箭头函数主要变现为以下特点：</p>
+<ol>
+<li>定义函数不再需要function关键词</li>
+<li>继承当前上下文的this</li>
+<li>省略return关键词<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//一个参数，一个表达式返回值</span></div><div class="line"><span class="keyword">var</span> people = <span class="function"><span class="params">name</span> =&gt;</span> <span class="string">'hello '</span>+name;</div><div class="line"></div><div class="line"><span class="comment">//多个参数，多行方法体</span></div><div class="line"><span class="keyword">var</span> people = <span class="function">(<span class="params">name,age</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">const</span> all = name+age;</div><div class="line">    <span class="keyword">return</span> all;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><p>所谓 Promise，就是一个对象，用来传递异步操作的消息。<br>Promise 对象代表一个异步操作，有三种状态：Pending（进行中）、Resolved（已完成，又称 Fulfilled）和 Rejected（已失败）。只有异步操作的结果，可以决定当前是哪一种状态，任何其他操作都无法改变这个状态。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="comment">/* 异步操作成功 */</span>)&#123;</div><div class="line">        resolve(value);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        reject(error);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">promise.then(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</div><div class="line"> <span class="comment">// success</span></div><div class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</div><div class="line"> <span class="comment">// failure</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>Promise 构造函数接受一个函数作为参数，该函数的两个参数分别是 resolve 方法和 reject 方法。<br>如果异步操作成功，则用 resolve 方法将 Promise 对象的状态，从「未完成」变为「成功」（即从 pending 变为 resolved）；<br>如果异步操作失败，则用 reject 方法将 Promise 对象的状态，从「未完成」变为「失败」（即从 pending 变为 rejected）。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;let和const命令&quot;&gt;&lt;a href=&quot;#let和const命令&quot; class=&quot;headerlink&quot; title=&quot;let和const命令&quot;&gt;&lt;/a&gt;let和const命令&lt;/h1&gt;&lt;h2 id=&quot;let命令&quot;&gt;&lt;a href=&quot;#let命令&quot; class
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>First</title>
