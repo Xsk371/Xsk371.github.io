@@ -358,8 +358,7 @@
           
           let和const命令let命令ES6新增了let命令，用来声明变量。它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效123456var a=1if (true)&#123;    var a=2    console.log(a) //2&#125;console.log(2) //2
 使用var两次输出都是2，而let则实际上为JavaScript新增了块级作用域。用它所声明的变量，只在let命令所在的代码块内有效。
-123456let a = 1if (true) &#123;    let a = 2    console.log(a)  //2&#125;console.log(a)  //1
-一道经典的题目：通过循环内部创建函数输出索引值。在ES5中一般通过闭包来实现，而使用ES6直接通过let声明变量即可。123456789101112131415//ES5var func=[]for( var i=0; i&lt;10; i++)&#123;    func.push((function(value)&#123;        return fu
+123456let a = 1if (true) &#123;    let a = 2    console.log(a)  //2&#125;co
           ...
           <!--noindex-->
           <div class="post-button text-center">
